@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import CreatePage from './routes/CreatePage'
 import LoginPage from './routes/LoginPage'
 import UpdatePage from './routes/UpdatePage'
+import NotFound from './routes/NotFound'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
@@ -16,6 +17,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/login" element={<LoginPage />} />
         <Route path="/create" element={<CreatePage />} />
         <Route path="/:postID/update" element={<UpdatePage />} />
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   </BrowserRouter>

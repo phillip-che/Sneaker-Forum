@@ -1,13 +1,12 @@
 import { useState } from 'react'
 import './App.css'
 
-function App() {
-
+const App = () => {
   return (
-    <div className="App">
-
+    <div>
+      HOME PAGE
     </div>
-  )
+  )    
 }
 
 export default App

@@ -1,6 +1,6 @@
 
 const Post = () => {
-    return(
+    return (
         <div>
             POST
         </div>

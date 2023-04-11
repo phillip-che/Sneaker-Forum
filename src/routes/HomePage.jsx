@@ -1,11 +1,11 @@
-import CreatePost from "../components/CreatePost"
+import PostList from "../components/PostList"
 
-const CreatePage = () => {
+const HomePage = () => {
     return(
         <div>
-            <CreatePost />
+            <PostList />
         </div>
     )
 }
 
-export default CreatePage
+export default HomePage

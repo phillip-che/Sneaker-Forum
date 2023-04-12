@@ -1,5 +1,5 @@
-const PostList = () => {
-    return(
+const PostList = ({posts}) => {
+    return (
         <div>
             LIST OF POSTS ON HOMEPAGE
         </div>

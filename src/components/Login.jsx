@@ -1,5 +1,5 @@
 import { Auth } from "@supabase/auth-ui-react";
-import { supabase } from "/client";
+import { supabase } from "../client";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
 
 const Login = () => {
@@ -7,6 +7,7 @@ const Login = () => {
     <div>
       <Auth
         supabaseClient={supabase}
+        providers={[]}
         appearance={{
           theme: ThemeSupa,
           variables: {

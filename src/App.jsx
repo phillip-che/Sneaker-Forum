@@ -36,7 +36,16 @@ const App = () => {
 
   return (
     <div>
-      <PostList posts={posts} />
+      {posts ? (
+        <div> 
+          <PostList posts={posts} />
+        </div>
+      ) : (
+        <div>
+          There are no posts.
+        </div>
+      )}
+      
     </div>
   )    
 }

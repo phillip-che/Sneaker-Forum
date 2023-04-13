@@ -33,7 +33,7 @@ const NavBar = () => {
           <li>Home</li>
         </Link>
         <Link to="/create">
-          <li>Post</li>
+          <li>Create</li>
         </Link>
         {auth ? (
           <div>

@@ -1,9 +1,14 @@
-const Post = ({timeCreated, title, upvotes}) => {
+import { Link } from "react-router-dom"
+
+const Post = ({timeCreated, title, upvotes, postID}) => {
+
     return (
         <div className="post">
-            <h5>Posted: {timeCreated}</h5>
-            <h3>{title}</h3>
-            <div>{upvotes} upvotes</div>
+            <Link to={`/${postID}`}>
+                <h5>Posted: {new Date(timeCreated).toLocaleDateString().toString()}</h5>
+                <h3>{title}</h3>
+                <div>{upvotes} upvotes</div>
+            </Link>
         </div>
     )
 }

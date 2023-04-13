@@ -42,7 +42,7 @@ const App = () => {
         </div>
       ) : (
         <div>
-          There are no posts.
+          There are no posts
         </div>
       )}
       

@@ -1,7 +1,10 @@
+import { useParams } from "react-router-dom"
+
 const PostInfo = () => {
-    return(
+    let params = useParams();
+    return (
         <div>
-            POST INFORMATION
+            POST INFORMATION: {params.postID}
         </div>
     )
 }

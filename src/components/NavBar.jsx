@@ -21,8 +21,14 @@ const NavBar = () => {
     .signOut()
     .then((error) => {
       setAuth(false);
-      console.log(error)
+      window.location = "/";
     });
+  }
+
+  const loginAlert = () => {
+    if(!auth) {
+      window.alert("Must be logged in first!")
+    }
   }
 
   return (
@@ -32,7 +38,7 @@ const NavBar = () => {
         <Link to="/">
           <li>Home</li>
         </Link>
-        <Link to="/create">
+        <Link to={auth ? "/create" : "/login"} onClick={loginAlert}>
           <li>Create</li>
         </Link>
         {auth ? (

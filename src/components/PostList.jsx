@@ -6,6 +6,7 @@ const PostList = ({posts}) => {
         <div className="post-list">
             {posts.map((post) => (
                 <Post 
+                    key={post.id}
                     timeCreated={post.created_at} 
                     title={post.title} 
                     upvotes={post.upvotes}

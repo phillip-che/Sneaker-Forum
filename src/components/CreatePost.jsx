@@ -34,7 +34,12 @@ const CreatePost = () => {
         await supabase
         .from('Posts')
         .insert([{author: user, title: input.title, description: input.description}])
-        .select();
+        .select()
+        .then((data) => {
+            console.log(data);
+            // window.location = "/";
+            window.alert("Post Successfully Created");
+        });
     }
 
     return (
@@ -43,6 +48,7 @@ const CreatePost = () => {
             <div>
                 <input name="title" className="title" placeholder="Title" type="text" onChange={handleChange} />
             </div>
+            
             <div>
                 <textarea name="description" placeholder="Text (Optional)" className="description" onChange={handleChange} >
                         

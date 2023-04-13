@@ -35,9 +35,10 @@
   justify-content: center;
   list-style: none;
   padding: 0 20px;
-  gap: 10px;
+  gap: 20px;
   cursor: pointer;
   font-weight: 500;
+  margin-right: 1rem;
 }
 
 .post {
@@ -86,7 +87,6 @@
 }
 
 .title {
-  /* margin-left: -460px; */
   background-color:#242424;
   border-style: groove;
   box-sizing: border-box;

@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 import { supabase } from '../client';
 import { useEffect, useState } from "react";
+import home from '../assets/home.png'
+import create from '../assets/create.png'
+import log_in from '../assets/login.png'
+import log_out from '../assets/logout.png'
 
 const NavBar = () => {
 
@@ -36,17 +40,23 @@ const NavBar = () => {
       <h3 className="">Sole Exchange</h3>
       <ul id="nav">
         <Link to="/">
-          <li>Home</li>
+          <li>
+            <img width="25px" src={home} />
+          </li>
+          Home
         </Link>
         <Link to={auth ? "/create" : "/login"} onClick={loginAlert}>
-          <li>Create</li>
+          <li><img width="25px" src={create} /></li>
+          Create
         </Link>
         {auth ? (
           <div>
+            <img width="25px" src={log_out} />
             <li className="logout" onClick={logout} >Logout</li>
           </div>
         ) : (
           <Link to="/login">
+            <img width="25px" src={log_in} />
             <li>Login</li>
           </Link>
         ) }

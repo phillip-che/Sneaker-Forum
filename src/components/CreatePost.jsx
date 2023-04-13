@@ -28,6 +28,9 @@ const CreatePost = () => {
     };
 
     const createPost = async () => {
+        if(input.title.length < 1) {
+            window.alert("Title ")
+        }
         await supabase
         .from('Posts')
         .insert([{author: user, title: input.title, description: input.description}])
@@ -46,7 +49,7 @@ const CreatePost = () => {
                 </textarea>
             </div>
 
-            <button className="button" >
+            <button disabled={input.title.length < 1} className="button" onClick={createPost}>
                 Post
             </button>
         </div>

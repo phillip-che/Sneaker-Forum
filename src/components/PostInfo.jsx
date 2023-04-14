@@ -1,7 +1,6 @@
 import { supabase } from "../client";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Comment from "./Comment";
 import commentIcon from "../assets/comment.png";
 import upvoteIcon from "../assets/upvote.png";
 import upvoted from "../assets/upvoted.png";

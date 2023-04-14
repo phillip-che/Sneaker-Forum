@@ -45,7 +45,7 @@ const CommentSection = ({ postID, timeSince }) => {
         .select()
         .then((response) => {
           console.log(response);
-          getComments();
+          window.location.reload();
         });
     }
   };

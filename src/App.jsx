@@ -3,6 +3,8 @@ import PostList from './components/PostList'
 import './App.css'
 import { supabase } from './client'
 import { v4 as uuid4 } from 'uuid';
+import SearchBar from './components/SearchBar';
+import Filters from './components/Filters';
 
 const App = () => {
 
@@ -35,6 +37,10 @@ const App = () => {
 
   return (
     <div>
+      <div className="filters-bar">
+        <SearchBar />
+        <Filters />
+      </div>
       {posts ? (
         <div> 
           <PostList posts={posts} />

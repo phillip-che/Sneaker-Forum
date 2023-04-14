@@ -34,7 +34,7 @@ const CreatePost = () => {
         .select()
         .then((data) => {
             console.log(data);
-            // window.location = "/";
+            window.location = "/";
             window.alert("Post Successfully Created");
         });
     }

@@ -128,7 +128,7 @@
 
 .post-time {
   text-align: right;
-  /* margin-left: 225px; */
+  margin-left: 225px;
 }
 
 .post-upvotes {
@@ -139,7 +139,6 @@
   text-align: right;
   box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.25);
   margin-top: 100px;
-  /* background-color: #ee5656; */
   background-color: #161616;
   width: 20%;
   padding: 1rem 3rem;
@@ -193,4 +192,52 @@ hr.gradient {
     #242424 51%,
     #161616 100%
   );
+}
+
+.search-container {
+  display: flex;
+  position: absolute;
+  margin: 0 auto;
+  background-color: #ee5656;
+  height: 30px;
+  border-radius: 30px;
+  padding: 10px 20px;
+  align-items: center;
+  width: 20px;
+  transition: 0.8s;
+  box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.4);
+}
+
+.search-container input {
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 0px;
+  font-weight: 500;
+  font-size: 16px;
+  transition: 0.8s;
+}
+
+.search-container:hover, .search-container:hover input {
+  width: 500px;
+  cursor: pointer;
+}
+
+.filters-container {
+  margin-left: 550px; /* adjustable */
+}
+
+.filters-bar {
+  margin: 30px auto;
+  width: 32%;
+}
+
+.filter-button {
+  border-radius: 30px;
+  margin-left: 10px;
+}
+
+.filter-button:focus {
+  background-color: #7e1b1b;
+  outline: 4px auto -webkit-focus-ring-color;
 }

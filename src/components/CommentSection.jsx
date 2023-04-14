@@ -21,6 +21,7 @@ const CommentSection = ({ postID, timeSince }) => {
 
     useEffect(() => {
         supabase.auth.onAuthStateChange((event, session) => {
+        console.log(session);
         if (session) {
             setUser(session.user.email);
         }

@@ -13,9 +13,12 @@ const NavBar = () => {
   useEffect(() => {
     supabase.auth.onAuthStateChange((event, session) => {
       console.log(event)
-      if(event ==="SIGNED_IN") {
+      console.log(session)
+      if(session) {
         setAuth(true);
-        // window.location = "/";
+        if(event ==="SIGNED_IN") {
+          window.location = "/";
+        }
       }
     })
   }, []);
@@ -51,7 +54,7 @@ const NavBar = () => {
         </Link>
         {auth ? (
           <div>
-            <img width="25px" src={log_out} />
+            <img width="25px" src={log_out} onClick={logout} />
             <li className="logout" onClick={logout} >Logout</li>
           </div>
         ) : (

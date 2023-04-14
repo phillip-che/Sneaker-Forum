@@ -26,8 +26,7 @@ const App = () => {
     getPosts();
 
     supabase.auth.onAuthStateChange((event, session) => {
-      if(event ==="SIGNED_IN") {
-        console.log(event)
+      if(event ==="SIGNED_IN" || session) {
         setUser(session.user);
         setAuth(true);
       }

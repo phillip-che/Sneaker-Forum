@@ -135,3 +135,7 @@
   justify-self: right;
   margin-left: 250px;
 }
+
+.post-upvotes {
+  cursor: pointer;
+}

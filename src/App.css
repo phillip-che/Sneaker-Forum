@@ -42,6 +42,7 @@
 }
 
 .post {
+  margin: 0 auto;
   width: 30%;
   box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.25);
   border-radius: 15px;
@@ -60,8 +61,6 @@
 }
 
 .post-list {
-  margin-top: 100px;
-  margin-left: 25%;
   gap: 10px;
 }
 
@@ -106,16 +105,11 @@
   margin-top: 10%;
 }
 
-.post-author {
-  font-size: .83em;
-}
-
 .post-footer {
   display: flex;
   align-items: center;
   justify-content: left;
   font-size: .83em;
-  /* background-color: rgb(56, 9, 94); */
 }
 
 .post-misc {
@@ -132,10 +126,30 @@
 }
 
 .post-time {
-  justify-self: right;
-  margin-left: 250px;
+  text-align: right;
+  /* margin-left: 225px; */
 }
 
 .post-upvotes {
   cursor: pointer;
+}
+
+.comment-list {
+  text-align: left;
+  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.25);
+  margin-top: 100px;
+  background-color: #ee5656;
+  width: 15%;
+  padding: 1rem 3rem;
+  border-radius: 15px;
+  margin: 0 auto;
+  margin-top: 25px;
+}
+
+.etc {
+  font-size: .83em;
+}
+
+.comment {
+  font-size: 18px;
 }

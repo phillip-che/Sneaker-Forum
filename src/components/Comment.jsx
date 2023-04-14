@@ -1,8 +1,10 @@
-const Comment = () => {
+const Comment = ({author, comment, date}) => {
 
     return (
-        <div>
-            COMMENT
+        <div className="comment-container">
+            <p className="etc">{author}</p>
+            <p className="comment">{comment}</p>
+            <p className="post-time etc">{date} ago</p>
         </div>
     )
 }

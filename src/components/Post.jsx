@@ -33,8 +33,8 @@ const Post = ({timeCreated, title, upvotes, postID}) => {
         <div className="post">
             <Link to={`/${postID}`}>
                 <h5>Posted {timeSince(new Date(timeCreated))} ago</h5>
-                <h3>{title}</h3>
-                <div>{upvotes} upvotes</div>
+                <h2>{title}</h2>
+                <div>{upvotes + (upvotes == 1 ? " Upvote" : " Upvotes")}</div>
             </Link>
         </div>
     )

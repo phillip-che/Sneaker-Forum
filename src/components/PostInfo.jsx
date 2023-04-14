@@ -1,9 +1,11 @@
 import { supabase } from "../client";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Comment from "./Comment";
 import commentIcon from "../assets/comment.png";
 import upvoteIcon from "../assets/upvote.png";
 import upvoted from "../assets/upvoted.png";
+import time from "../assets/time.png";
 
 const PostInfo = () => {
   let params = useParams();
@@ -84,55 +86,69 @@ const PostInfo = () => {
     const updateUpvotes = async () => {
       await supabase
         .from("Posts")
-        .update({ upvotes: upvotes+1 })
-        .eq("id", params.postID)
+        .update({ upvotes: upvotes + 1 })
+        .eq("id", params.postID);
     };
     setLiked(!liked);
     updateUpvotes();
   };
 
   return (
-    <div className="post-container">
-      {post ? (
-        <div>
-          <p className="post-author">{post.author}</p>
-          <h2 className="post-title">{post.title}</h2>
-          <p className="post-description">{post.description}</p>
-          <div className="post-footer">
-            <img className="post-icons" src={commentIcon} />
-            <li className="post-misc">
-              <p className="post-comments">
-                {comments.length +
-                  (comments.length == 1 ? " Comment" : " Comments")}
-              </p>
-            </li>
-            {!liked ? (
-              <>
-                <img className="post-icons post-upvotes" src={upvoteIcon} onClick={upvote} />
-                <li className="post-misc">
-                  <p>
-                    {upvotes + (upvotes == 1 ? " Upvote" : " Upvotes")}
-                  </p>
-                </li>
-              </>
-            ) : (
-              <>
-                <img className="post-icons post-upvotes" src={upvoted} />
-                <li className="post-misc">
-                  <p>
-                    {upvotes + (upvotes == 1 ? " Upvote" : " Upvotes")}
-                  </p>
-                </li>
-              </>
-            )}
-            <li className="post-misc">
-              <p className="post-time">
-                Posted {timeSince(new Date(post.created_at))} ago
-              </p>
-            </li>
+    <div>
+      <div className="post-container">
+        {post ? (
+          <div>
+            <p className="etc">{post.author}</p>
+            <h2 className="post-title">{post.title}</h2>
+            <p className="post-description">{post.description}</p>
+            <div className="post-footer">
+              <img className="post-icons" src={commentIcon} />
+              <li className="post-misc">
+                <p className="post-comments">
+                  {comments.length +
+                    (comments.length == 1 ? " Comment" : " Comments")}
+                </p>
+              </li>
+              {!liked ? (
+                <>
+                  <img
+                    className="post-icons post-upvotes"
+                    src={upvoteIcon}
+                    onClick={upvote}
+                  />
+                  <li className="post-misc">
+                    <p>{upvotes + (upvotes == 1 ? " Upvote" : " Upvotes")}</p>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <img className="post-icons post-upvotes" src={upvoted} />
+                  <li className="post-misc">
+                    <p>{upvotes + (upvotes == 1 ? " Upvote" : " Upvotes")}</p>
+                  </li>
+                </>
+              )}
+              {/* <img className="post-icons" src={time} /> */}
+              <li className="post-misc">
+                <p className="post-time">
+                  Posted {timeSince(new Date(post.created_at))} ago
+                </p>
+              </li>
+            </div>
           </div>
-        </div>
-      ) : null}
+        ) : null}
+      </div>
+      <div className="comment-list">
+        {comments
+          ? comments.map((comment) => (
+              <Comment
+                author={comment.author}
+                comment={comment.comment}
+                date={timeSince(new Date(comment.created_at))}
+              />
+            ))
+          : null}
+      </div>
     </div>
   );
 };

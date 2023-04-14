@@ -168,6 +168,7 @@
 }
 
 .comment-button {
+  border-radius: 20px;
   align-self: right;
   text-align: right;
   justify-content: right;

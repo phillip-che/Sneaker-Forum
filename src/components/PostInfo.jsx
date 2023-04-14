@@ -140,7 +140,7 @@ const PostInfo = () => {
           </div>
         ) : null}
       </div>
-      <CommentSection comments={comments} timeSince={timeSince} />
+      <CommentSection comments={comments} postID={params.postID} timeSince={timeSince} />
     </div>
   );
 };

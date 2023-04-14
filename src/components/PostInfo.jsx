@@ -6,6 +6,7 @@ import commentIcon from "../assets/comment.png";
 import upvoteIcon from "../assets/upvote.png";
 import upvoted from "../assets/upvoted.png";
 import time from "../assets/time.png";
+import CommentSection from "./CommentSection";
 
 const PostInfo = () => {
   let params = useParams();
@@ -95,6 +96,7 @@ const PostInfo = () => {
 
   return (
     <div>
+
       <div className="post-container">
         {post ? (
           <div>
@@ -138,17 +140,7 @@ const PostInfo = () => {
           </div>
         ) : null}
       </div>
-      <div className="comment-list">
-        {comments
-          ? comments.map((comment) => (
-              <Comment
-                author={comment.author}
-                comment={comment.comment}
-                date={timeSince(new Date(comment.created_at))}
-              />
-            ))
-          : null}
-      </div>
+      <CommentSection comments={comments} timeSince={timeSince} />
     </div>
   );
 };

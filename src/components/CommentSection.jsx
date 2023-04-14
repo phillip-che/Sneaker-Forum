@@ -42,26 +42,28 @@ const CommentSection = ({ comments, postID, timeSince }) => {
 
     return (
         <div className="comment-container">
-        <div className="comment-list">
-            <textarea
-            className="comment-content"
-            placeholder="Leave a comment"
-            name="comment"
-            onChange={handleChange}
-            ></textarea>
-            <button className="comment-button" onClick={addComment} >Comment</button>
-            <h3>Comments</h3>
-            <hr class="gradient" />
-            {comments
-            ? comments.map((comment) => (
-                <Comment
-                    author={comment.author}
-                    comment={comment.comment}
-                    date={timeSince(new Date(comment.created_at))}
-                />
-                ))
-            : null}
-        </div>
+    
+                <textarea
+                className="comment-content"
+                placeholder="Leave a comment"
+                name="comment"
+                onChange={handleChange}
+                ></textarea>
+                <button className="comment-button" onClick={addComment} >Comment</button>
+                
+                <div className="comment-list">
+                    <h3>Comments</h3>
+                    <hr class="gradient" />
+                    {comments
+                    ? comments.map((comment) => (
+                        <Comment
+                            author={comment.author}
+                            comment={comment.comment}
+                            date={timeSince(new Date(comment.created_at))}
+                        />
+                        ))
+                    : null}
+            </div>
         </div>
     );
 };

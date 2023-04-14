@@ -103,7 +103,7 @@
   padding: 1rem 3rem;
   border-radius: 15px;
   margin: 0 auto;
-  margin-top: 10%;
+  margin-top: 5%;
 }
 
 .post-footer {
@@ -135,17 +135,21 @@
   cursor: pointer;
 }
 
-.comment-list {
-  text-align: left;
+.comment-container {
+  text-align: right;
   box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.25);
   margin-top: 100px;
   /* background-color: #ee5656; */
   background-color: #161616;
-  width: 15%;
+  width: 20%;
   padding: 1rem 3rem;
   border-radius: 15px;
   margin: 0 auto;
   margin-top: 25px;
+}
+
+.comment-list {
+  text-align: left;
 }
 
 .etc {
@@ -158,7 +162,7 @@
 
 .comment-content {
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   width: 100%;
   height: 150px;
   border-radius: 4px;
@@ -169,10 +173,7 @@
 
 .comment-button {
   border-radius: 20px;
-  align-self: right;
-  text-align: right;
-  justify-content: right;
-  justify-self: right;
+  font-size: 12px;
 }
 
 hr.gradient {

@@ -176,6 +176,12 @@
   font-size: 12px;
 }
 
+.comment-button:disabled {
+  background-color: #ee5656;
+  color: #555;
+  cursor: not-allowed;
+}
+
 hr.gradient {
   height: 1px;
   border: none;

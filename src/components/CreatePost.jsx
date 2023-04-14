@@ -28,9 +28,6 @@ const CreatePost = () => {
     };
 
     const createPost = async () => {
-        if(input.title.length < 1) {
-            window.alert("Title ")
-        }
         await supabase
         .from('Posts')
         .insert([{author: user, title: input.title, description: input.description}])

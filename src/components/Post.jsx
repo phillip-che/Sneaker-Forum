@@ -8,23 +8,23 @@ const Post = ({timeCreated, title, upvotes, postID}) => {
         var interval = seconds / 31536000;
       
         if (interval > 1) {
-          return Math.floor(interval) + " years";
+          return Math.floor(interval) + ((Math.floor(interval) == 1) ? " year" : " years");
         }
         interval = seconds / 2592000;
         if (interval > 1) {
-          return Math.floor(interval) + " months";
+          return Math.floor(interval) + ((Math.floor(interval) == 1) ? " month" : " months");
         }
         interval = seconds / 86400;
         if (interval > 1) {
-          return Math.floor(interval) + " days";
+          return Math.floor(interval) + ((Math.floor(interval) == 1) ? " day" : " days");
         }
         interval = seconds / 3600;
         if (interval > 1) {
-          return Math.floor(interval) + " hours";
+          return Math.floor(interval) + ((Math.floor(interval) == 1) ? " hour" : " hours");
         }
         interval = seconds / 60;
         if (interval > 1) {
-          return Math.floor(interval) + " minutes";
+          return Math.floor(interval) + ((Math.floor(interval) == 1) ? " minute" : " minutes");
         }
         return Math.floor(seconds) + " seconds";
     }

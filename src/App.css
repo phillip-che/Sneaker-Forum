@@ -70,9 +70,9 @@
   box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.25);
   width: 25%;
   padding: 3rem;
-  margin-left: 35%;
-  margin-top: 10%;
   border-radius: 15px;
+  margin: 0 auto;
+  margin-top: 10%;
 }
 
 .description {
@@ -93,4 +93,45 @@
   border-radius: 4px;
   padding: 5px;
   width: 100%;
+}
+
+.post-container {
+  text-align: left;
+  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.25);
+  background-color: #7e1b1b;
+  width: 25%;
+  padding: 1rem 3rem;
+  border-radius: 15px;
+  margin: 0 auto;
+  margin-top: 10%;
+}
+
+.post-author {
+  font-size: .83em;
+}
+
+.post-footer {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  font-size: .83em;
+  /* background-color: rgb(56, 9, 94); */
+}
+
+.post-misc {
+  list-style: none;
+  list-style-position: outside;
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.post-icons {
+  width: 20px;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+.post-time {
+  justify-self: right;
+  margin-left: 250px;
 }

@@ -1,8 +1,19 @@
 import { Auth } from "@supabase/auth-ui-react";
 import { supabase } from "../client";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
+import { useEffect } from "react";
+
 
 const Login = () => {
+
+  useEffect(() => {
+    supabase.auth.onAuthStateChange((event, session) => {
+      if(event ==="SIGNED_IN") {
+        window.location = "/";
+      }
+    })
+  }, []);
+
   return (
     <div>
       <Auth

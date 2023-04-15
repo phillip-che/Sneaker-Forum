@@ -1,9 +1,13 @@
 import { FaSearch } from "react-icons/fa"
 
-const SearchBar = () => {
+const SearchBar = ({searchItems}) => {
     return (
         <div className="search-container">
-            <input type="text" placeholder="Search..." />
+            <input 
+            onChange={(input) => searchItems(input.target.value)} 
+            type="text" 
+            placeholder="Search..." 
+            />
             <FaSearch />
         </div>
     )

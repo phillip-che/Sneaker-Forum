@@ -6,6 +6,7 @@ import upvoteIcon from "../assets/upvote.png";
 import upvoted from "../assets/upvoted.png";
 import updateIcon from "../assets/update.png";
 import CommentSection from "./CommentSection";
+import { Link } from "react-router-dom";
 
 const PostInfo = () => {
   let params = useParams();
@@ -100,6 +101,21 @@ const PostInfo = () => {
     updateUpvotes();
   };
 
+  const deleteConfirmation = () => {
+    if(confirm("Are you sure you want to delete your post? You can't undo this.")) {
+      console.log("POST HAS BEEN DELETED.");
+      const deletePost = async () => {
+        await supabase
+        .from('Posts')
+        .delete()
+        .eq('id', params.postID)
+      }
+      deletePost();
+      window.location = "/";
+      window.alert("Post Successfully Deleted.");
+    };
+  }
+
   return (
     <div>
       {post ? (
@@ -112,8 +128,8 @@ const PostInfo = () => {
                 <img className="post-icons" src={updateIcon} />
               </div>
               <div className="dropdown-content">
-                <a href="#">Edit</a>
-                <a href="#">Delete</a>
+                <Link to={`/${params.postID}/update`} >Edit</Link>
+                <Link onClick={deleteConfirmation}>Delete</Link>
               </div>
             </div>
             ) : null}

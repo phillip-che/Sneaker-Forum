@@ -1,7 +1,10 @@
+import { useParams } from "react-router-dom"
+
 const UpdatePost = () => {
+    let params = useParams();
     return(
         <div>
-            UPDATE POST
+            UPDATE POST: {params.postID}
         </div>
     )
 }

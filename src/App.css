@@ -256,7 +256,7 @@ hr.gradient {
   display: none;
   text-align: left;
   position: absolute;
-  margin-left: 585px;
+  margin-left: 585px; /* adjustable */
   background-color: #161616;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;

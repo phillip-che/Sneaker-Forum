@@ -52,3 +52,6 @@ button:hover {
   background-color: #7e1b1b;;
 }
 
+textarea, input {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}

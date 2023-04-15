@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import commentIcon from "../assets/comment.png";
 import upvoteIcon from "../assets/upvote.png";
 import upvoted from "../assets/upvoted.png";
-import time from "../assets/time.png";
+import updateIcon from "../assets/update.png";
 import CommentSection from "./CommentSection";
 
 const PostInfo = () => {
@@ -13,6 +13,7 @@ const PostInfo = () => {
   const [comments, setComments] = useState([]);
   const [upvotes, setUpvotes] = useState(0);
   const [liked, setLiked] = useState(false);
+  const [user, setUser] = useState("");
 
   useEffect(() => {
     const getPost = async () => {
@@ -37,6 +38,12 @@ const PostInfo = () => {
           setComments(response.data);
         });
     };
+
+    supabase.auth.onAuthStateChange((event, session) => {
+      if (session) {
+        setUser(session.user.email);
+      }
+    });
 
     getPost();
     getComments();
@@ -95,10 +102,22 @@ const PostInfo = () => {
 
   return (
     <div>
-
-      <div className="post-container">
-        {post ? (
+      {post ? (
+        <div className="post-container">
           <div>
+
+            {user === post.author ? (
+              <div className="update-dropdown">
+              <div className="dropdown-button">
+                <img className="post-icons" src={updateIcon} />
+              </div>
+              <div className="dropdown-content">
+                <a href="#">Edit</a>
+                <a href="#">Delete</a>
+              </div>
+            </div>
+            ) : null}
+            
             <p className="etc">{post.author}</p>
             <h2 className="post-title">{post.title}</h2>
             <p className="post-description">{post.description}</p>
@@ -129,7 +148,6 @@ const PostInfo = () => {
                   </li>
                 </>
               )}
-              {/* <img className="post-icons" src={time} /> */}
               <li className="post-misc">
                 <p className="post-time">
                   Posted {timeSince(new Date(post.created_at))} ago
@@ -137,9 +155,13 @@ const PostInfo = () => {
               </li>
             </div>
           </div>
-        ) : null}
-      </div>
-      <CommentSection comments={comments} postID={params.postID} timeSince={timeSince} />
+        </div>
+      ) : null}
+      <CommentSection
+        comments={comments}
+        postID={params.postID}
+        timeSince={timeSince}
+      />
     </div>
   );
 };

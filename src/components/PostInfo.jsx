@@ -101,7 +101,7 @@ const PostInfo = () => {
     updateUpvotes();
   };
 
-  const deleteConfirmation = () => {
+  const deletePost = () => {
     if(confirm("Are you sure you want to delete your post? You can't undo this.")) {
       console.log("POST HAS BEEN DELETED.");
       const deletePost = async () => {
@@ -129,7 +129,7 @@ const PostInfo = () => {
               </div>
               <div className="dropdown-content">
                 <Link to={`/${params.postID}/update`} >Edit</Link>
-                <Link onClick={deleteConfirmation}>Delete</Link>
+                <Link onClick={deletePost}>Delete</Link>
               </div>
             </div>
             ) : null}

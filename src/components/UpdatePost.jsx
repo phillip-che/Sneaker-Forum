@@ -35,6 +35,22 @@ const UpdatePost = () => {
       .from("Posts")
       .update({ title: input.title, description: input.description })
       .eq("id", params.postID);
+      window.location = `/${params.postID}`;
+      window.alert("Post Successfully Updated.");
+  };
+
+  const deletePost = () => {
+    if (
+      confirm("Are you sure you want to delete your post? You can't undo this.")
+    ) {
+      console.log("POST HAS BEEN DELETED.");
+      const deletePost = async () => {
+        await supabase.from("Posts").delete().eq("id", params.postID);
+      };
+      deletePost();
+      window.location = "/";
+      window.alert("Post Successfully Deleted.");
+    }
   };
 
   const handleChange = (event) => {
@@ -72,10 +88,8 @@ const UpdatePost = () => {
               onChange={handleChange}
             ></textarea>
           </div>
-          <button
-            className="button"
-            //   onClick={deletePost}
-          >
+        <div className="update-buttons">
+          <button className="button" onClick={deletePost}>
             Delete
           </button>
           <button
@@ -85,6 +99,7 @@ const UpdatePost = () => {
           >
             Update
           </button>
+        </div>
         </div>
       ) : null}
     </div>

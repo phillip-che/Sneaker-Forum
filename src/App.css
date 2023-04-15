@@ -248,6 +248,12 @@ hr.solid {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.update-buttons {
+  background-color: pink;
+  align-items: left;
+  justify-content: left;
+}
+
 .dropdown-button {
   cursor: pointer;
 }

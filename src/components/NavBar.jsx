@@ -17,7 +17,7 @@ const NavBar = () => {
       if(session) {
         setAuth(true);
         if(event ==="SIGNED_IN") {
-          window.location = "/";
+          // window.location = "/";
         }
       }
     })

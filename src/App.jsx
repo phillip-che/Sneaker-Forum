@@ -35,11 +35,33 @@ const App = () => {
     })
   }, []);
 
+  const newFilter = async () => {
+    await supabase
+    .from('Posts')
+    .select()
+    .order('created_at', { ascending: false })
+    .then(({data}) => {
+      setPosts(data);
+      console.log(data)
+    })
+  }
+
+  const popularFilter = async () => {
+    await supabase
+    .from('Posts')
+    .select()
+    .order('upvotes', { ascending: false })
+    .then(({data}) => {
+      setPosts(data);
+      console.log(data)
+    })
+  }
+
   return (
     <div>
       <div className="filters-bar">
         <SearchBar />
-        <Filters />
+        <Filters popularFilter={popularFilter} newFilter={newFilter} />
       </div>
       {posts ? (
         <div> 

@@ -136,7 +136,9 @@ const PostInfo = () => {
             
             <p className="etc">{post.author}</p>
             <h2 className="post-title">{post.title}</h2>
+            <hr class="solid" />
             <p className="post-description">{post.description}</p>
+            <hr class="solid" />
             <div className="post-footer">
               <img className="post-icons" src={commentIcon} />
               <li className="post-misc">

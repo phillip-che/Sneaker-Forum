@@ -12,13 +12,8 @@ const NavBar = () => {
 
   useEffect(() => {
     supabase.auth.onAuthStateChange((event, session) => {
-      console.log(session)
       if(session) {
         setAuth(true);
-        console.log(event)
-        // if(event ==="SIGNED_IN") {
-        //   window.location = "/";
-        // }
       }
     })
   }, []);

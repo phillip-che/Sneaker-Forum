@@ -253,8 +253,9 @@ hr.solid {
 }
 
 .update-buttons {
-  align-items: left;
-  justify-content: left;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
 
 .dropdown-button {
@@ -285,6 +286,11 @@ hr.solid {
   padding: 10px 12px;
   text-decoration: none;
   display: block;
+}
+
+.delete {
+  background-color: transparent;
+  border-color: #7e1b1b;
 }
 
 /* Change color of dropdown links on hover */

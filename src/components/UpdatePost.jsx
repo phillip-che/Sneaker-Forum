@@ -89,7 +89,7 @@ const UpdatePost = () => {
             ></textarea>
           </div>
         <div className="update-buttons">
-          <button className="button" onClick={deletePost}>
+          <button className="button delete" onClick={deletePost}>
             Delete
           </button>
           <button

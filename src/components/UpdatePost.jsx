@@ -39,16 +39,42 @@ const UpdatePost = () => {
       window.alert("Post Successfully Updated.");
   };
 
-  const deletePost = () => {
-    if (
-      confirm("Are you sure you want to delete your post? You can't undo this.")
-    ) {
+  const deleteConfirmation = () => {
+    if (confirm("Are you sure you want to delete your post? You can't undo this.")) {
       console.log("POST HAS BEEN DELETED.");
+
       const deletePost = async () => {
-        await supabase.from("Posts").delete().eq("id", params.postID);
+        await supabase
+        .from("Posts")
+        .delete()
+        .eq("id", params.postID)
+        .then(({data, error}) => {
+          if(error) {
+            console.log(error);
+            const deleteComments = async () => {
+              await supabase
+              .from("Comments")
+              .delete()
+              .eq("post_id", params.postID)
+              .then(({data, error}) => {
+                const removePost = async () => {
+                  await supabase
+                  .from("Posts")
+                  .delete()
+                  .eq("id", params.postID)
+                  .then((response) => {
+                    window.location = "/";
+                  })
+                }
+                removePost();
+              })
+            }
+            deleteComments();
+          }
+        });
       };
+
       deletePost();
-      window.location = "/";
       window.alert("Post Successfully Deleted.");
     }
   };
@@ -89,7 +115,7 @@ const UpdatePost = () => {
             ></textarea>
           </div>
         <div className="update-buttons">
-          <button className="button delete" onClick={deletePost}>
+          <button className="button delete" onClick={deleteConfirmation}>
             Delete
           </button>
           <button

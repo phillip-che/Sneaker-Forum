@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import PostList from "./components/PostList";
 import "./App.css";
 import { supabase } from "./client";
-import { v4 as uuid4 } from "uuid";
 import SearchBar from "./components/SearchBar";
 import Filters from "./components/Filters";
 
@@ -94,7 +93,10 @@ const App = () => {
           <PostList posts={searchInput.length > 0 ? searchResults : posts} />
         </div>
       ) : (
-        <div>There are no posts</div>
+        <div>
+          <div class="loader"></div>
+          <h1>Loading</h1>
+        </div>
       )}
     </div>
   );

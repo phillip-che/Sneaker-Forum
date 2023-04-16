@@ -52,21 +52,6 @@ const CommentSection = ({ postID, timeSince }) => {
 
   return (
     <div className="comment-container">
-<div className="comment-box">
-                  <textarea
-        className="comment-content"
-        placeholder="Leave a comment"
-        name="comment"
-        onChange={handleChange}
-      ></textarea>
-      <button
-        disabled={commentInput.length < 1}
-        className="comment-button"
-        onClick={addComment}
-      >
-        Comment
-      </button>
-              </div>
       {comments ? (
         <div className="comment-list">
           <h3>Comments</h3>
@@ -80,9 +65,22 @@ const CommentSection = ({ postID, timeSince }) => {
                 />
               ))
             : null}
-            
+          <div className="comment-box">
+            <textarea
+              className="comment-content"
+              placeholder="Leave a comment"
+              name="comment"
+              onChange={handleChange}
+            ></textarea>
+            <button
+              disabled={commentInput.length < 1}
+              className="comment-button"
+              onClick={addComment}
+            >
+              Comment
+            </button>
+          </div>
         </div>
-        
       ) : null}
     </div>
   );

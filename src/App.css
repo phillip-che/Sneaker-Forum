@@ -116,7 +116,8 @@
 .post-misc {
   list-style: none;
   list-style-position: outside;
-  display: inline-block;
+  display: flex;
+  justify-content: right;
   margin-right: 20px;
 }
 
@@ -127,6 +128,8 @@
 }
 
 .post-time {
+  display: flex;
+  justify-content: right;
   text-align: right;
   margin-left: 225px;
 }

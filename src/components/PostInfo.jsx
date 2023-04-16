@@ -101,18 +101,42 @@ const PostInfo = () => {
     updateUpvotes();
   };
 
-  const deletePost = () => {
+  const deleteConfirmation = () => {
     if (
       confirm("Are you sure you want to delete your post? You can't undo this.")
     ) {
-      console.log("POST HAS BEEN DELETED.");
-      const deletePost = async () => {
-        await supabase.from("Posts").delete().eq("id", params.postID);
-      };
-      deletePost();
-      window.location = "/";
-      window.alert("Post Successfully Deleted.");
-    }
+      if(comments.length > 0) {
+        const deleteComments = async () => {
+          await supabase
+          .from('Comments')
+          .delete()
+          .eq('post_id', params.postID)
+          .then((response) => {
+            console.log(response);
+            const deletePost = async () => {
+              await supabase
+              .from('Posts')
+              .delete()
+              .eq('id', params.postID)    
+            }
+            deletePost();
+            window.location = "/";
+            window.alert("Post Successfully Deleted.");
+          });
+        }
+        deleteComments();
+        } else {
+          const deletePost = async () => {
+            await supabase
+            .from('Posts')
+            .delete()
+            .eq('id', params.postID)    
+          }
+          deletePost();
+          window.location = "/";
+          window.alert("Post Successfully Deleted.");
+        };
+      }      
   };
 
   return (
@@ -128,7 +152,7 @@ const PostInfo = () => {
                   </div>
                   <div className="dropdown-content">
                     <Link to={`/${params.postID}/update`}>Edit</Link>
-                    <Link onClick={deletePost}>Delete</Link>
+                    <Link onClick={deleteConfirmation}>Delete</Link>
                   </div>
                 </div>
               ) : null}

@@ -124,9 +124,9 @@ const PostInfo = () => {
 
             {user === post.author ? (
               <div className="update-dropdown">
-              <div className="dropdown-button">
-                <img className="post-icons" src={updateIcon} />
-              </div>
+                <div className="dropdown-button">
+                  <img className="post-icons" src={updateIcon} />
+                </div>
               <div className="dropdown-content">
                 <Link to={`/${params.postID}/update`} >Edit</Link>
                 <Link onClick={deletePost}>Delete</Link>

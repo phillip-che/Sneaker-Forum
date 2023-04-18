@@ -124,37 +124,15 @@ const PostInfo = () => {
     if (
       confirm("Are you sure you want to delete your post? You can't undo this.")
     ) {
-      if(comments.length > 0) {
-        const deleteComments = async () => {
+        const deletePost = async () => {
           await supabase
-          .from('Comments')
+          .from('Posts')
           .delete()
-          .eq('post_id', params.postID)
-          .then((response) => {
-            console.log(response);
-            const deletePost = async () => {
-              await supabase
-              .from('Posts')
-              .delete()
-              .eq('id', params.postID)    
-            }
-            deletePost();
-            window.location = "/";
-            window.alert("Post Successfully Deleted.");
-          });
+          .eq('id', params.postID)
+          .then(response => window.location = "/")
         }
-        deleteComments();
-        } else {
-          const deletePost = async () => {
-            await supabase
-            .from('Posts')
-            .delete()
-            .eq('id', params.postID)    
-          }
-          deletePost();
-          window.location = "/";
-          window.alert("Post Successfully Deleted.");
-        };
+        deletePost();
+        window.alert("Post Successfully Deleted.");
       }      
   };
 

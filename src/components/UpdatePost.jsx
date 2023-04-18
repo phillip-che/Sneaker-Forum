@@ -48,30 +48,7 @@ const UpdatePost = () => {
         .from("Posts")
         .delete()
         .eq("id", params.postID)
-        .then(({data, error}) => {
-          if(error) {
-            console.log(error);
-            const deleteComments = async () => {
-              await supabase
-              .from("Comments")
-              .delete()
-              .eq("post_id", params.postID)
-              .then(({data, error}) => {
-                const removePost = async () => {
-                  await supabase
-                  .from("Posts")
-                  .delete()
-                  .eq("id", params.postID)
-                  .then((response) => {
-                    window.location = "/";
-                  })
-                }
-                removePost();
-              })
-            }
-            deleteComments();
-          }
-        });
+        .then(response => window.location = "/")
       };
 
       deletePost();

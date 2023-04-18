@@ -39,7 +39,7 @@ const CreatePost = () => {
         .insert([{id: input.postID, author: user.email, title: input.title, description: input.description, user_id: user.id}])
         .select()
         .then((data) => {
-            if(images) {
+            if(images.length > 0) {
                 const storeImage = async (image) => {
                     const imageID = uuid4();
                     imageIDs.push(imageID);

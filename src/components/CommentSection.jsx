@@ -55,10 +55,11 @@ const CommentSection = ({ postID, timeSince }) => {
       {comments ? (
         <div className="comment-list">
           <h3>Comments</h3>
-          <hr class="gradient" />
+          <hr className="gradient" />
           {comments
-            ? comments.map((comment) => (
+            ? comments.map((comment, index) => (
                 <Comment
+                key={index}
                   author={comment.author}
                   comment={comment.comment}
                   date={timeSince(new Date(comment.created_at))}

@@ -5,7 +5,7 @@ const Comment = ({author, comment, date}) => {
             <p className="etc">{author}</p>
             <p className="comment">{comment}</p>
             <p className="post-time etc">{date} ago</p>
-            <hr class="gradient" />
+            <hr className="gradient" />
         </div>
     )
 }

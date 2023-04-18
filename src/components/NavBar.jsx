@@ -24,6 +24,7 @@ const NavBar = () => {
     .then((error) => {
       setAuth(false);
       window.location = "/";
+      window.location.reload();
     });
   }
 

@@ -156,7 +156,7 @@ const PostInfo = () => {
 
               <p className="etc">{post.author}</p>
               <h2 className="post-title">{post.title}</h2>
-              <hr class="solid" />
+              <hr className="solid" />
               <p className="post-description">{post.description}</p>
               {images ? (
                 <div className="images-container">
@@ -169,7 +169,7 @@ const PostInfo = () => {
                   })}
                 </div>
               ) : null}
-              <hr class="solid" />
+              <hr className="solid" />
               <div className="post-footer">
                 <img className="post-icons" src={commentIcon} />
                 <li className="post-misc">
@@ -213,7 +213,7 @@ const PostInfo = () => {
         </div>
       ) : (
         <div>
-          <div class="loader"></div>
+          <div className="loader"></div>
           <h1>Loading</h1>
         </div>
       )}

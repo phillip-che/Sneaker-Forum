@@ -333,3 +333,18 @@ hr.solid {
 .image-url:active {
   outline: 0;
 }
+
+.image-delete-button {
+  overflow: hidden;
+	position: absolute;
+	border: none;
+	padding: 3px 7px;
+	border-radius: 50%;
+	background: transparent;
+	color: white;
+	cursor: pointer;
+}
+
+.image-upload {
+  margin-bottom: 20px;
+}

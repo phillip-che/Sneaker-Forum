@@ -11,6 +11,7 @@ const CreatePost = () => {
         description: "",
     });
     const [images, setImages] = useState([]);
+    const [imageIDs, setImageIDs] = useState([]);
 
     useEffect(() => {
         console.log(input.postID);
@@ -35,27 +36,32 @@ const CreatePost = () => {
     const createPost = async () => {
         await supabase
         .from('Posts')
-        .insert([{id: input.postID, author: user.email, title: input.title, description: input.description}])
+        .insert([{id: input.postID, author: user.email, title: input.title, description: input.description, user_id: user.id}])
         .select()
         .then((data) => {
-            if(images.length) {
+            if(images) {
                 const storeImage = async (image) => {
-                    console.log("Storing Images...");
+                    const imageID = uuid4();
+                    imageIDs.push(imageID);
                     await supabase
                     .storage
                     .from('images')
-                    .upload(user.id + "/" + input.postID + "/" + uuid4(), image)
+                    .upload(user.id + "/" + input.postID + "/" + imageID, image)
                     .then((data, error) => {
-                        console.log("Stored " + data);
-                        if(error) {
-                            console.log(error);
+                        const storeImages = async () => { 
+                            await supabase
+                            .from('Posts')
+                            .update([{image_ids: imageIDs}])
+                            .eq('id', input.postID)
+                            .then(data => window.location = `/${input.postID}`) 
                         }
+                        storeImages();
                     })
                 }
                 images.forEach(image => storeImage(image));
+            } else {
+                window.location = `/${input.postID}`;
             }
-            console.log(data);
-            window.location = `/${input.postID}`;
         });
     }
 

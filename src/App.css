@@ -348,3 +348,9 @@ hr.solid {
 .image-upload {
   margin-bottom: 20px;
 }
+
+.images-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

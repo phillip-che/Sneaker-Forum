@@ -15,6 +15,7 @@ const PostInfo = () => {
   const [upvotes, setUpvotes] = useState(0);
   const [liked, setLiked] = useState(false);
   const [user, setUser] = useState("");
+  const [images, setImages] = useState([]);
 
   useEffect(() => {
     const getPost = async () => {
@@ -26,6 +27,24 @@ const PostInfo = () => {
           console.log(response.data[0]);
           setPost(response.data[0]);
           setUpvotes(response.data[0].upvotes);
+          setImages(response.data[0].image_ids);
+          // const getImages = async () => {
+          //   await supabase
+          //   .storage
+          //   .from('images')
+          //   .list(response.data[0].user_id, {
+          //     limit: 100,
+          //     offset: 0,
+          //     sortBy: { column: 'name', order: 'asc' },
+          //   })
+          //   .then((data, error) => {
+          //     console.log(data);
+          //     setImages(data);
+          //   });
+          // }
+
+          // getImages();
+
         });
     };
 
@@ -42,7 +61,7 @@ const PostInfo = () => {
 
     supabase.auth.onAuthStateChange((event, session) => {
       if (session) {
-        setUser(session.user.email);
+        setUser(session.user);
       }
     });
 
@@ -145,7 +164,7 @@ const PostInfo = () => {
         <div>
           <div className="post-container">
             <div>
-              {user === post.author ? (
+              {user.email === post.author ? (
                 <div className="update-dropdown">
                   <div className="dropdown-button">
                     <img className="post-icons" src={updateIcon} />
@@ -161,6 +180,17 @@ const PostInfo = () => {
               <h2 className="post-title">{post.title}</h2>
               <hr class="solid" />
               <p className="post-description">{post.description}</p>
+              {images ? (
+                <div className="images-container">
+                  {images.map((image, index) => {
+                    return (
+                      <div key={index} className="image-upload">
+                        <img width={"250px"} src={`https://jansememwvnogkysxstd.supabase.co/storage/v1/object/public/images/${post.user_id}/${post.id}/${image}`} />
+                      </div>
+                    );
+                  })}
+                </div>
+              ) : null}
               <hr class="solid" />
               <div className="post-footer">
                 <img className="post-icons" src={commentIcon} />

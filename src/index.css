@@ -72,6 +72,12 @@ textarea, input {
   100% { transform: rotate(360deg); }
 }
 
+textarea {
+  white-space: pre-wrap;
+}
+
 p {
-  white-space: pre-line;
+  white-space: pre-wrap;
+  display : block;
+  overflow-wrap: break-word;
 }

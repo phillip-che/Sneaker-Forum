@@ -75,6 +75,15 @@
   margin-top: 10%;
 }
 
+.title {
+  background-color:#161616;
+  border-style: groove;
+  box-sizing: border-box;
+  border-radius: 4px;
+  padding: 5px;
+  width: 100%;
+}
+
 .description {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -84,16 +93,6 @@
   box-sizing: border-box;
   resize: none;
   background-color:#161616;
-  white-space: pre;
-}
-
-.title {
-  background-color:#161616;
-  border-style: groove;
-  box-sizing: border-box;
-  border-radius: 4px;
-  padding: 5px;
-  width: 100%;
 }
 
 .post-container {

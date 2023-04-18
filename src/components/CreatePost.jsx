@@ -38,9 +38,24 @@ const CreatePost = () => {
         .insert([{id: input.postID, author: user.email, title: input.title, description: input.description}])
         .select()
         .then((data) => {
-            // save images to storage -> userID/postID/ upload
+            if(images.length) {
+                const storeImage = async (image) => {
+                    console.log("Storing Images...");
+                    await supabase
+                    .storage
+                    .from('images')
+                    .upload(user.id + "/" + input.postID + "/" + uuid4(), image)
+                    .then((data, error) => {
+                        console.log("Stored " + data);
+                        if(error) {
+                            console.log(error);
+                        }
+                    })
+                }
+                images.forEach(image => storeImage(image));
+            }
             console.log(data);
-            window.location = "/";
+            window.location = `/${input.postID}`;
         });
     }
 

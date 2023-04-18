@@ -24,7 +24,7 @@ const PostInfo = () => {
         .select()
         .eq("id", params.postID)
         .then((response) => {
-          console.log(response.data[0]);
+          console.log(response);
           setPost(response.data[0]);
           setUpvotes(response.data[0].upvotes);
           setImages(response.data[0].image_ids);
@@ -163,7 +163,7 @@ const PostInfo = () => {
                   {images.map((image, index) => {
                     return (
                       <div key={index} className="image-upload">
-                        <img width={"250px"} src={`https://jansememwvnogkysxstd.supabase.co/storage/v1/object/public/images/${post.user_id}/${post.id}/${image}`} />
+                        <img width={"600px"} src={`https://jansememwvnogkysxstd.supabase.co/storage/v1/object/public/images/${post.user_id}/${post.id}/${image}`} />
                       </div>
                     );
                   })}

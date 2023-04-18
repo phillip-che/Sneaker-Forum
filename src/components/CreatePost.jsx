@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react"
 import { supabase } from "../client";
 import { v4 as uuid4 } from "uuid";
-import log_out from '../assets/logout.png'
 
 const CreatePost = () => {
 
@@ -10,8 +9,8 @@ const CreatePost = () => {
         postID: uuid4(),
         title: "",
         description: "",
-        images: []
     });
+    const [images, setImages] = useState([]);
 
     useEffect(() => {
         console.log(input.postID);
@@ -46,10 +45,7 @@ const CreatePost = () => {
     }
 
     const onUpload = (event) => {
-        setInputs(prevInputs => ({
-            ...prevInputs,
-            images: [...prevInputs.images, event.target.files[0]]
-          }));
+          setImages(prev =>  [...prev, event.target.files[0]]);
     }
 
     return (
@@ -65,12 +61,15 @@ const CreatePost = () => {
                 </textarea>
             </div>
 
-            {input.images ? (
+            {images ? (
                 <div>
-                    {input.images.map((image) => {
+                    {images.map((image, index) => {
                         return (
-                            <div>
+                            <div key={image} >
                                 <img className="upload-image" width={"250px"} src={URL.createObjectURL(image)} />
+                                <button onClick={() => {
+                                    setImages(images.filter((e) => e !== image));
+                                }}>Remove</button>
                             </div>
                         )
                     })}
@@ -79,7 +78,7 @@ const CreatePost = () => {
             
             <input className="image-url" type="file" onChange={(e) => onUpload(e)} />
             
-            <button disabled={input.title.length < 1} className="button" onClick={createPost}>
+            <button disabled={!input.title} className="button" onClick={createPost}>
                 Post
             </button>
         </div>

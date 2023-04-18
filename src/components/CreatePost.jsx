@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { supabase } from "../client";
 import { v4 as uuid4 } from "uuid";
+import log_out from '../assets/logout.png'
 
 const CreatePost = () => {
 
@@ -38,15 +39,17 @@ const CreatePost = () => {
         .insert([{id: input.postID, author: user.email, title: input.title, description: input.description}])
         .select()
         .then((data) => {
+            // save images to storage -> userID/postID/ upload
             console.log(data);
             window.location = "/";
         });
     }
 
     const onUpload = (event) => {
-        let file = event.target.files[0];
-        console.log(file);
-        input.images.push(file);
+        setInputs(prevInputs => ({
+            ...prevInputs,
+            images: [...prevInputs.images, event.target.files[0]]
+          }));
     }
 
     return (
@@ -65,11 +68,15 @@ const CreatePost = () => {
             {input.images ? (
                 <div>
                     {input.images.map((image) => {
-                        <img className="upload-image" src={image} />
+                        return (
+                            <div>
+                                <img className="upload-image" width={"250px"} src={URL.createObjectURL(image)} />
+                            </div>
+                        )
                     })}
                 </div>
             ) : null }
-
+            
             <input className="image-url" type="file" onChange={(e) => onUpload(e)} />
             
             <button disabled={input.title.length < 1} className="button" onClick={createPost}>

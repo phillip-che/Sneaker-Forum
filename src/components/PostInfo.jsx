@@ -5,6 +5,7 @@ import commentIcon from "../assets/comment.png";
 import upvoteIcon from "../assets/upvote.png";
 import upvoted from "../assets/upvoted.png";
 import updateIcon from "../assets/update.png";
+import time from "../assets/time.png";
 import CommentSection from "./CommentSection";
 import { Link } from "react-router-dom";
 
@@ -180,12 +181,11 @@ const PostInfo = () => {
                     </li>
                   </>
                 )}
-                <li className="post-misc">
+                  <img className="clock-icon" src={time} />
                   <p className="post-time">
                     Posted {timeSince(new Date(post.created_at))} ago
                   </p>
-                </li>
-              </div>
+                </div>
             </div>
           </div>
           <CommentSection

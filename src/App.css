@@ -109,7 +109,6 @@
 .post-footer {
   display: flex;
   align-items: center;
-  justify-content: left;
   font-size: .83em;
 }
 
@@ -127,11 +126,16 @@
   vertical-align: middle;
 }
 
+.clock-icon {
+  width: 17px;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
 .post-time {
   display: flex;
   justify-content: right;
   text-align: right;
-  margin-left: 225px;
 }
 
 .post-upvotes {

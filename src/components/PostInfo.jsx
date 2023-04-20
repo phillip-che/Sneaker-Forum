@@ -163,7 +163,7 @@ const PostInfo = () => {
                   {images.map((image, index) => {
                     return (
                       <div key={index} className="image-upload">
-                        <img width={"600px"} src={`https://jansememwvnogkysxstd.supabase.co/storage/v1/object/public/images/${post.user_id}/${post.id}/${image}`} />
+                        <img className="image" src={`https://jansememwvnogkysxstd.supabase.co/storage/v1/object/public/images/${post.user_id}/${post.id}/${image}`} />
                       </div>
                     );
                   })}

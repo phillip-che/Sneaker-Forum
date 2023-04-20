@@ -87,7 +87,7 @@ const CreatePost = () => {
                     {images.map((image, index) => {
                         return (
                             <div key={index} className="image-upload">
-                                <img width={"250px"} src={URL.createObjectURL(image)} />
+                                <img className="image" src={URL.createObjectURL(image)} />
                                 <button
                                 className="image-delete-button"
                                 onClick={() => {

@@ -28,23 +28,6 @@ const PostInfo = () => {
           setPost(response.data[0]);
           setUpvotes(response.data[0].upvotes);
           setImages(response.data[0].image_ids);
-          // const getImages = async () => {
-          //   await supabase
-          //   .storage
-          //   .from('images')
-          //   .list(response.data[0].user_id, {
-          //     limit: 100,
-          //     offset: 0,
-          //     sortBy: { column: 'name', order: 'asc' },
-          //   })
-          //   .then((data, error) => {
-          //     console.log(data);
-          //     setImages(data);
-          //   });
-          // }
-
-          // getImages();
-
         });
     };
 

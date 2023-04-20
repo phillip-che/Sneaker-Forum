@@ -35,20 +35,22 @@ const UpdatePost = () => {
       .from("Posts")
       .update({ title: input.title, description: input.description })
       .eq("id", params.postID);
-      window.location = `/${params.postID}`;
-      window.alert("Post Successfully Updated.");
+    window.location = `/${params.postID}`;
+    window.alert("Post Successfully Updated.");
   };
 
   const deleteConfirmation = () => {
-    if (confirm("Are you sure you want to delete your post? You can't undo this.")) {
+    if (
+      confirm("Are you sure you want to delete your post? You can't undo this.")
+    ) {
       console.log("POST HAS BEEN DELETED.");
 
       const deletePost = async () => {
         await supabase
-        .from("Posts")
-        .delete()
-        .eq("id", params.postID)
-        .then(response => window.location = "/")
+          .from("Posts")
+          .delete()
+          .eq("id", params.postID)
+          .then((response) => (window.location = "/"));
       };
 
       deletePost();
@@ -91,18 +93,34 @@ const UpdatePost = () => {
               onChange={handleChange}
             ></textarea>
           </div>
-        <div className="update-buttons">
-          <button className="button delete" onClick={deleteConfirmation}>
-            Delete
-          </button>
-          <button
-            disabled={input.title.length < 1}
-            className="button"
-            onClick={updatePost}
-          >
-            Update
-          </button>
-        </div>
+
+          {post.image_ids ? (
+            <div className="images-container">
+              {post.image_ids.map((image, index) => {
+                return (
+                  <div key={index} className="image-upload">
+                    <img
+                      className="image"
+                      src={`https://jansememwvnogkysxstd.supabase.co/storage/v1/object/public/images/${post.user_id}/${post.id}/${image}`}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          ) : null}
+
+          <div className="update-buttons">
+            <button className="button delete" onClick={deleteConfirmation}>
+              Delete
+            </button>
+            <button
+              disabled={input.title.length < 1}
+              className="button"
+              onClick={updatePost}
+            >
+              Update
+            </button>
+          </div>
         </div>
       ) : null}
     </div>

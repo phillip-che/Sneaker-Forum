@@ -5,6 +5,7 @@ import home from '../assets/home.png'
 import create from '../assets/create.png'
 import log_in from '../assets/login.png'
 import log_out from '../assets/logout.png'
+import logo from '../assets/logo.png'
 
 const NavBar = () => {
 
@@ -36,7 +37,10 @@ const NavBar = () => {
 
   return (
     <div className="nav-bar">
-      <h3 className="">Sole Exchange</h3>
+      <div className="header">
+        <h3 className="">Sole Exchange</h3>
+        <img className="logo" src={logo} />
+      </div>    
       <ul id="nav">
         <Link to="/">
           <li>
